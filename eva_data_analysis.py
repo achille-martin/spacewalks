@@ -1,7 +1,17 @@
-
 import matplotlib.pyplot as plt
 import pandas as pd
+import sys
 
+def main(input_file, output_file, graph_file):
+    print("--START--")
+
+    eva_data = read_json_to_dataframe(input_file)
+
+    write_dataframe_to_csv(eva_data, output_file)
+
+    plot_cumulative_time_in_space(eva_data, graph_file)
+
+    print("--END--")
 
 def read_json_to_dataframe(input_file):
     """
@@ -47,7 +57,7 @@ def text_to_duration(duration):
         duration_hours (float): The duration in hours
     """
     hours, minutes = duration.split(":")
-    duration_hours = int(hours) + int(minutes)/60
+    duration_hours = int(hours) + int(minutes)/6  # there is an intentional bug on this line (should divide by 60 not 6)
     return duration_hours
 
 
@@ -95,18 +105,16 @@ def plot_cumulative_time_in_space(df, graph_file):
     plt.show()
 
 
-# Main code
+if __name__ == "__main__":
 
-print("--START--")
+    if len(sys.argv) < 3:
+        input_file = './eva-data.json'
+        output_file = './eva-data.csv'
+        print(f'Using default input and output filenames')
+    else:
+        input_file = sys.argv[1]
+        output_file = sys.argv[2]
+        print('Using custom input and output filenames')
 
-input_file = open('./eva-data.json', 'r')
-output_file = open('./eva-data.csv', 'w')
-graph_file = './cumulative_eva_graph.png'
-
-eva_data = read_json_to_dataframe(input_file)
-
-write_dataframe_to_csv(eva_data, output_file)
-
-plot_cumulative_time_in_space(eva_data, graph_file)
-
-print("--END--")
+    graph_file = './cumulative_eva_graph.png'
+    main(input_file, output_file, graph_file)
