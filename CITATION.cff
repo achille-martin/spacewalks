@@ -3,6 +3,8 @@ message: "If you use this software, please cite it as below."
 authors:
 - family-names: Martin
   given-names: Achille
+- family-names: Sidders
+  given-names: Sarah
 orcid: https://orcid.org/0009-0000-0472-5517
 title:achille-martin/spacewalks: Spacewalks Initial Release
 version: v1.0.0
