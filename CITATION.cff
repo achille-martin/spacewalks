@@ -1,0 +1,12 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Achille
+  given-names: Martin
+orcid: https://orcid.org/0009-0000-0472-5517
+title:achille-martin/spacewalks: Spacewalks Initial Release
+version: v1.0.0
+date-released: 2024-11-29
+identifiers:
+- type: doi
+- value: 10.5072/zenodo.137895 
